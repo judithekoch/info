@@ -17,13 +17,22 @@ public class Main {
 		MyParser parser2 = new MyParser(scanner2);
 		parser2.parse();
 		
-		System.out.println("next:");
-		parser.printTreePreOrder(parser.getParentNode());
+		System.out.println("\nnext:");
+		parser.printTreePreOrder(parser2.getParentNode());
 		System.out.println("");
-		parser.printTreeInOrder(parser.getParentNode());
+		parser.printTreeInOrder(parser2.getParentNode());
 		System.out.println("");
-		parser.printTreePostOrder(parser.getParentNode());
+		parser.printTreePostOrder(parser2.getParentNode());
 		
+		System.out.println("\nnext:");
+		MyScanner scanner3 = new MyScanner("x+y*3+7-2");
+		MyParser parser3 = new MyParser(scanner3);
+		parser3.parse();
+		parser.printTreePreOrder(parser3.getParentNode());
+		System.out.println("");
+		parser.printTreeInOrder(parser3.getParentNode());
+		System.out.println("");
+		parser.printTreePostOrder(parser3.getParentNode());
 	}
 	
 }

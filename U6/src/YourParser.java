@@ -1,5 +1,5 @@
 
-public class MyParser {
+public class YourParser {
 
 	private MyScanner scanner;
 	private Character[] charArray;
@@ -9,7 +9,7 @@ public class MyParser {
 	private TreeNode<Character> parentNode = new TreeNode<Character>();
 	private TreeNode<Character> terminal = new TreeNode<Character>(); 
 	
-	public MyParser(MyScanner scanner){
+	public YourParser(MyScanner scanner){
 		this.scanner = scanner;
 		scanner.scan();
 		charArray = scanner.getCharArray();
