@@ -65,7 +65,7 @@ public class MyParser {
 			next();
 			term();
 		} else {
-			if(operation(index+1)){
+			if(index + 1 < charArray.length && operation(index+1)){
 				if(!isBracket(charArray[index+2])){
 					if(index+3 < charArray.length && !multiplication(index+3) && !isBracket(charArray[index+3])){
 						terminal = new TreeNode<Character>(charArray[index+1], new TerminalNode<Character>(charArray[index]), new TreeNode<Character>(charArray[index+3], new TerminalNode<Character>(charArray[index+2]), new TerminalNode<Character>(charArray[index+4])));
@@ -78,6 +78,8 @@ public class MyParser {
 					skip(2);
 					terminal = new TreeNode<Character>((charArray[index-1]), new TerminalNode<Character>(charArray[index-2]), term());
 				}
+			} else {
+				terminal = new TerminalNode<Character>(charArray[index]);
 			}
 		}
 		return terminal;
