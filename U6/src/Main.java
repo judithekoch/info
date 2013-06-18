@@ -35,7 +35,7 @@ public class Main {
 		parser3.printTreePostOrder(parser3.getParentNode());
 		
 		System.out.println("\nnext:");
-		MyScanner scanner4 = new MyScanner("x+y*(3+7-2)"); //x+y*(3+7-2) // 2*(3+7)
+		MyScanner scanner4 = new MyScanner("x+y*(3+7-2)");
 		MyParser parser4 = new MyParser(scanner4);
 		parser4.parse();
 		parser4.printTreePreOrder(parser4.getParentNode());
@@ -63,6 +63,26 @@ public class Main {
 		parser6.printTreeInOrder(parser6.getParentNode());
 		System.out.println("");
 		parser6.printTreePostOrder(parser6.getParentNode());
+		
+		System.out.println("\nnext:");
+		MyScanner scanner7 = new MyScanner("(a+3)*(b-5*2)"); 
+		MyParser parser7 = new MyParser(scanner7);
+		parser7.parse();
+		parser7.printTreePreOrder(parser7.getParentNode());
+		System.out.println("");
+		parser7.printTreeInOrder(parser7.getParentNode());
+		System.out.println("");
+		parser7.printTreePostOrder(parser7.getParentNode());
+		
+		System.out.println("\nnext: ERROR");
+		MyScanner scanner8 = new MyScanner("(a+3*(b-5*2)"); 
+		MyParser parser8 = new MyParser(scanner8);
+		parser8.parse();
+		parser8.printTreePreOrder(parser8.getParentNode());
+		System.out.println("");
+		parser8.printTreeInOrder(parser8.getParentNode());
+		System.out.println("");
+		parser8.printTreePostOrder(parser8.getParentNode());
 	}
 	
 }

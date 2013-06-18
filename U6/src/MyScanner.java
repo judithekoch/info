@@ -6,12 +6,19 @@ public class MyScanner {
 	public char[] charArray;
 	public ArrayList<Character> charArrayList = new ArrayList<Character>(); 
 	public Character[] charArrayToUse;
+	private Brackets brackets;
+	private boolean correctBrackets;
 	
 	public MyScanner(String string){
 		stringToScan = string;
+		brackets = new Brackets(string);
+		correctBrackets = (brackets.prüfeKlammerung()) ? true : false;
 	}
 	
 	public void scan(){
+		if (!correctBrackets){
+			System.out.println("Please check your brackets, you might not get the desired result.");
+		}
 		charArray = stringToScan.toCharArray();
 		makeArrayList(charArray);
 		if (!checkForBrackets()){

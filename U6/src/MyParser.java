@@ -71,8 +71,12 @@ public class MyParser {
 						terminal = new TreeNode<Character>(charArray[index+1], new TerminalNode<Character>(charArray[index]), new TreeNode<Character>(charArray[index+3], new TerminalNode<Character>(charArray[index+2]), new TerminalNode<Character>(charArray[index+4])));
 						skip(5);		
 					} else {
-						terminal = new TreeNode<Character>(charArray[index+1], new TerminalNode<Character>(charArray[index]), new TerminalNode<Character>(charArray[index+2]));
-						skip(3);
+						if(index+4 < charArray.length && multiplication(index+3) && !isBracket(charArray[index+4])){
+							terminal = new TreeNode<Character>(charArray[index+3], new TreeNode<Character>(charArray[index+1], new TerminalNode<Character>(charArray[index]), new TerminalNode<Character>(charArray[index+2])), new TerminalNode<Character>(charArray[index+4]));
+						} else {
+							terminal = new TreeNode<Character>(charArray[index+1], new TerminalNode<Character>(charArray[index]), new TerminalNode<Character>(charArray[index+2]));
+							skip(3);
+						}
 					}
 				} else {
 					skip(2);
