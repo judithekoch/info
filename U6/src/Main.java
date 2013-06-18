@@ -3,7 +3,7 @@ public class Main {
 
 	public static void main(String args[]){
 		
-		MyScanner scanner = new MyScanner("(1*3)+(5-(3*2))");
+		MyScanner scanner = new MyScanner("1*(3+5)-3*2");
 		MyParser parser = new MyParser(scanner);
 		parser.parse();
 		
@@ -33,6 +33,16 @@ public class Main {
 		parser.printTreeInOrder(parser3.getParentNode());
 		System.out.println("");
 		parser.printTreePostOrder(parser3.getParentNode());
+		
+		System.out.println("\nnext:");
+		MyScanner scanner4 = new MyScanner("x+y*(3+7-2)");
+		MyParser parser4 = new MyParser(scanner4);
+		parser4.parse();
+		parser.printTreePreOrder(parser4.getParentNode());
+		System.out.println("");
+		parser.printTreeInOrder(parser4.getParentNode());
+		System.out.println("");
+		parser.printTreePostOrder(parser4.getParentNode());
 	}
 	
 }
