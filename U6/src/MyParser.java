@@ -49,13 +49,13 @@ public class MyParser {
 			next();
 		} 
 		
-		if(addition(index)){
+		if(index < charArray.length && operation(index)){
 			Character symbol = charArray[index];
 			next();
 			TreeNode<Character> right = term();
 			return parentNode = new TreeNode<Character>(symbol, left, right);
 		} else {
-			return left;
+			return parentNode = left;
 		}
 		
 	}
@@ -65,10 +65,15 @@ public class MyParser {
 			next();
 			term();
 		} else {
-			if(addition(index+1)){
+			if(operation(index+1)){
 				if(!isBracket(charArray[index+2])){
-					terminal = new TreeNode<Character>(charArray[index + 1], new TerminalNode<Character>(charArray[index]), new TerminalNode<Character>(charArray[index+2]));
-					skip(3);
+					if(index+3 < charArray.length && !multiplication(index+3) && !isBracket(charArray[index+3])){
+						terminal = new TreeNode<Character>(charArray[index+1], new TerminalNode<Character>(charArray[index]), new TreeNode<Character>(charArray[index+3], new TerminalNode<Character>(charArray[index+2]), new TerminalNode<Character>(charArray[index+4])));
+						skip(5);		
+					} else {
+						terminal = new TreeNode<Character>(charArray[index+1], new TerminalNode<Character>(charArray[index]), new TerminalNode<Character>(charArray[index+2]));
+						skip(3);
+					}
 				} else {
 					skip(2);
 					terminal = new TreeNode<Character>((charArray[index-1]), new TerminalNode<Character>(charArray[index-2]), term());
@@ -78,8 +83,12 @@ public class MyParser {
 		return terminal;
 	}
 	
-	private boolean addition(int index){
+	private boolean operation(int index){
 		return "+-*".indexOf(charArray[index]) >= 0;
+	}
+
+	private boolean multiplication(int index){
+		return "*".indexOf(charArray[index]) >= 0;
 	}
 	
 	/*public TreeNode<Character> parse(){	
