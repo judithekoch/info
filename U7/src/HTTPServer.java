@@ -1,9 +1,12 @@
 import java.net.*;
 import java.io.*;
 import java.util.*;
+import javax.script.*;
 
 public class HTTPServer
 {
+	
+	
     public static
     void main (String argv[])
     throws IOException
@@ -80,23 +83,24 @@ extends Thread
                         URI = URI + "index.html";
                     if(URI.contains("/time")){
                     	Date date = new Date();
-//                    	System.out.println("Current time is: " + date.toString());
                     	String outputString = "Current time is: " + date.toString();
-                    	byte[] output = outputString.getBytes();
-                    	httpout.write(output);
-                    	httpout.close();
+                    	writeToPage(outputString, httpout);
                     }
+                    if(URI.contains("result")){
+                    	String outputString = "<form method=get action=/result><input type=text name=ausdruck><input type=submit value=Berechnen></form>";
+//                    	MyParser parser = new MyParser(new MyScanner(""));
+//                    	TreeNode parentNode = parser.parse();
+                    	String term = URIparams.substring(9);
+                    	term.replace("%2B", "+");
+                    	term.replace("%2D", "-");
+                    	term.replace("%2A", "*");
+                    	String result = "unbekannt";
+                		String resultString = "<p> Das Ergebnis von: " + term + "</p><p>Ist gleich: " + result + "</p>";
+                		writeToPage(outputString, resultString, httpout);
+                    } 
                     if(URI.contains("/calculator")){
-                    	String outputString = "<!doctype html><html><head></head><body><form method=get action=/calculator><input type=text name=ausdruck><input type=submit value=Berechnen></form></body></html>";
-                    	byte[] output = outputString.getBytes();
-                    	httpout.write(output);
-                    	httpout.close();
-                    	if(URI.contains("ausdruck")){
-                    		String resultString = "test";
-                        	byte[] result = outputString.getBytes();
-                        	httpout.write(result);
-                        	httpout.close();
-                    	}
+                    	String outputString = "<form method=get action=/result><input type=text name=ausdruck><input type=submit value=Berechnen></form>";
+                    	writeToPage(outputString, httpout);
                     }
                     if (URI.startsWith ("/"))
                         URI = URI.substring (1);
@@ -204,4 +208,31 @@ extends Thread
             System.out.println ("I/O error am Anfang " + e);
         }
     }
+    
+    private void writeToPage(String outputOne, String outputTwo, OutputStream out){
+    	String websiteStart = "<!doctype html><html><head></head><body>";
+    	String websiteEnd = "</body></html>";
+    	String outputString = websiteStart + outputOne + outputTwo + websiteEnd;
+    	byte[] output = outputString.getBytes();
+    	try{
+    	out.write(output);
+    	out.close();
+    	} catch (IOException e){
+    		//...
+    	}
+    }
+    
+    private void writeToPage(String outputOne, OutputStream out){
+    	String websiteStart = "<!doctype html><html><head></head><body>";
+    	String websiteEnd = "</body></html>";
+    	String outputString = websiteStart + outputOne + websiteEnd;
+    	byte[] output = outputString.getBytes();
+    	try{
+    	out.write(output);
+    	out.close();
+    	} catch (IOException e){
+    		System.out.println(e);
+    	}
+    }
+    
 }

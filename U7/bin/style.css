@@ -1,0 +1,34 @@
+li {
+	list-style: none;
+}
+
+a {
+	display: block;
+	float: left;
+	margin-left: 5px;
+}
+
+h1 {
+	font-family: sans-serif;
+}
+
+#singleImage {
+	position: absolute;
+	width: 100%;
+	background-color: black;
+	opacity: 0.3;
+}
+
+div div img {
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 1;
+}
+
+button {
+	position: absolute;
+}
+
+#invisible {
+	display: none;
+}
