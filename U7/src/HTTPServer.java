@@ -2,6 +2,7 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import javax.script.*;
+import listStackChainNode.*;
 
 public class HTTPServer
 {
@@ -91,9 +92,8 @@ extends Thread
 //                    	MyParser parser = new MyParser(new MyScanner(""));
 //                    	TreeNode parentNode = parser.parse();
                     	String term = URIparams.substring(9);
-                    	term.replace("%2B", "+");
-                    	term.replace("%2D", "-");
-                    	term.replace("%2A", "*");
+                    	term = term.replace("%2B", "+");
+                    	
                     	String result = "unbekannt";
                 		String resultString = "<p> Das Ergebnis von: " + term + "</p><p>Ist gleich: " + result + "</p>";
                 		writeToPage(outputString, resultString, httpout);
