@@ -2,7 +2,6 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import javax.script.*;
-import listStackChainNode.*;
 
 public class HTTPServer
 {
@@ -94,7 +93,13 @@ extends Thread
                     	String term = URIparams.substring(9);
                     	term = term.replace("%2B", "+");
                     	
-                    	String result = "unbekannt";
+                    	MyParser parser = new MyParser(new MyScanner(term));
+                    	parser.parse();
+                    	String termString = parser.postOrder(parser.getParentNode()); 
+                    	
+                    	Calculator calculator = new Calculator(termString);
+                    	
+                    	String result = "" + calculator.getResult();	//"unbekannt";
                 		String resultString = "<p> Das Ergebnis von: " + term + "</p><p>Ist gleich: " + result + "</p>";
                 		writeToPage(outputString, resultString, httpout);
                     } 
