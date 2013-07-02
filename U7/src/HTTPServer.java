@@ -88,12 +88,14 @@ extends Thread
                     }
                     if(URI.contains("result")){
                     	String outputString = "<form method=get action=/result><input type=text name=ausdruck><input type=submit value=Berechnen></form>";
+                    	
+                    	
+                    	
 //                    	MyParser parser = new MyParser(new MyScanner(""));
 //                    	TreeNode parentNode = parser.parse();
                     	String term = URIparams.substring(9);
-                    	term.replace("%2B", "+");
-                    	term.replace("%2D", "-");
-                    	term.replace("%2A", "*");
+                    	term = term.replace("%2B", "+");
+                    	
                     	String result = "unbekannt";
                 		String resultString = "<p> Das Ergebnis von: " + term + "</p><p>Ist gleich: " + result + "</p>";
                 		writeToPage(outputString, resultString, httpout);
