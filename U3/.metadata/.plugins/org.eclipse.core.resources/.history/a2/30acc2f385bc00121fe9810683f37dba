@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class Factorial {
+	
+	List<Integer> liste = new ArrayList<Integer>();
+	
+	Factorial(){
+		for (int i = 0; i<= 100; i++){
+			int result = 1;
+			if (i = 0){
+			} else {
+				result *= i;
+			}
+		liste.add(result);
+		}
+	}
+
+	public int factorial(int n){
+		int result = 1;
+		for (int i = 1; i<=n; i++){
+			result *= i;
+		}
+		return result;
+	}
+	
+	public int fakultaet(int n) {
+	     if (n>0) {
+	          return n * fakultaet(n-1); // (direkte) Rekursion
+	     } else {
+	          return 1;
+	     }
+	}
+	
+	public int fakultaet_o1(int n){
+		return liste.get(n);
+	}
+
+	
+}

@@ -1,0 +1,73 @@
+package fibonacci;
+public class Fibonacci {
+	
+	public Fibonacci(){
+		
+	}
+
+	public static void main(String[] args) {
+		long startTime = System.currentTimeMillis();
+		long endTime;
+		long endTime2;
+		long endTime3;
+		
+		System.out.println(fibo(30));
+		endTime = System.currentTimeMillis();
+		System.out.println(endTime - startTime);
+		
+		System.out.println(fiboMath(30));
+		endTime2 = System.currentTimeMillis();
+		System.out.println(endTime2 - startTime);
+		
+		System.out.println(fiboLoop(30));
+		endTime3 = System.currentTimeMillis();
+		System.out.println(endTime3 - startTime);
+	}
+	
+
+	// from lecture
+	private static int fibi(int n, int i, int fibi_i_1, int fibi_i_2) {
+		if (n<=1){
+			return n; // fib(1) = 1, fib(0) = 1
+		} else if (i == n) {
+			return fibi_i_1 + fibi_i_2; // == fib(n)
+		} else { 
+			return fibi(n, i+1, fibi_i_1 + fibi_i_2, fibi_i_1);
+		}
+	}
+
+	private static int fibo(int n){
+		return fibi(n, 2, 1, 0); 
+	}
+
+	
+	// naive recursive implementation
+	private static int fiboMath(int n){
+	 	if(n<1){
+	 		return 0;
+	 	} else if(n==1 || n==2){
+	 		return 1;
+	 	}
+		return fiboMath(n-1) + fiboMath(n-2);
+	}
+	
+	
+	// calculation with for loop 
+	private static int fiboLoop(int n){
+		int result = 0;
+		int result_1 = 1;
+		int result_2 = 0;
+		for (int i=0; i<=n; i++){
+			if(i==0){
+				result = 0;
+			} else if (i==1 || i==2){
+				result = 1;
+			} else {
+				result_2 = result_1;
+				result_1 = result;
+				result = result_1 + result_2;
+			}
+		}
+		return result;
+	}
+}

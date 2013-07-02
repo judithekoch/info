@@ -1,0 +1,17 @@
+package coinCombos;
+
+public class coinCombos {
+
+
+int coinCombo(int x, List<Integer> m){
+     if (x<0) return 0;
+     else if (x==0) return 1;
+     else if (m.isEmpty()) return 0;
+     else { // Fallunterscheigung: 1. MŸnzwert verwenden oder nicht
+          return mŸnzstŸckelungen(x-m.head(), m)
+               + mŸnzstŸckelungen(x, m.tail())
+     }
+}
+
+
+}

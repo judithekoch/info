@@ -1,0 +1,12 @@
+1367409289684	Rename package 'binomailCoefficient'
+1367409565849	Move compilation unit
+1367409589092	Rename compilation unit 'Uber.java'
+1367411857699	Change method 'length'
+1367417319241	Rename field 'tail'
+1367417357200	Rename field 'element'
+1367417433109	Rename method 'getLast'
+1367418429147	Move compilation unit
+1367418434750	Delete element
+1367418876000	Convert local variable 'scanner' to field
+1367694668505	Rename local variable 'nodeInsert'
+1367696362878	Rename local variable 'nodeAfter'

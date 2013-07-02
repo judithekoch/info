@@ -2,17 +2,17 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import javax.script.*;
+import listStackChainNode.*;
 
 public class HTTPServer
 {
-	
 	
     public static
     void main (String argv[])
     throws IOException
     {
         if (argv.length > 0) {
-            ServerSocket ss = new ServerSocket (Integer.parseInt (argv [0]));
+            ServerSocket ss = new ServerSocket (80);	//Integer.parseInt (argv [0])
             System.out.println("running on port: " + ss.getLocalPort());
             while (true) {
                 // bearbeite die Verbindung asynchron
@@ -32,6 +32,7 @@ extends Thread
 
     HTTPConnection (Socket s)
     {
+    	
         sock = s;
         setPriority (NORM_PRIORITY - 1);
         // starte run() als neuen Thread

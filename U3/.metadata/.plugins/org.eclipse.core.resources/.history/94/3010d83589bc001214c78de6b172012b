@@ -1,0 +1,28 @@
+package coins;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Coins {
+
+	List<Double> list = new ArrayList<Double>();
+	
+	Coins(){
+		
+		list.add(0.01);
+		list.add(0.02);
+		list.add(0.05);
+		list.add(0.10);
+		list.add(0.20);
+		list.add(0.50);
+		list.add(1.00);
+		list.add(2.00);
+		
+	}
+	
+	public int numberOfPossibilities(int n){
+		int result = 0;
+		return result;
+	}
+	
+}

@@ -1,0 +1,18 @@
+package factorial;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class FactorialTest {
+
+	@Test
+	public void test() {
+		extracted();
+	}
+
+	private void extracted() {
+		fail("Not yet implemented");
+	}
+
+}

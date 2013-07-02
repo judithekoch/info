@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="/Users/judithekoch/Dropbox/HTW/SS13/Info 2/info/listStackChainNode.jar"/>
 	<classpathentry kind="lib" path="/Users/judithekoch/Dropbox/HTW/SS13/Info 2/info/parserjk.jar"/>
+	<classpathentry kind="lib" path="/Users/judithekoch/Dropbox/HTW/SS13/Info 2/info/U5/src/listStackChainNode"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

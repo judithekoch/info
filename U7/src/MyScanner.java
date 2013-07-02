@@ -12,7 +12,7 @@ public class MyScanner {
 	public MyScanner(String string){
 		stringToScan = string;
 		brackets = new Brackets(string);
-		correctBrackets = (brackets.pruefeKlammerung()) ? true : false;
+		correctBrackets = (brackets.prüfeKlammerung()) ? true : false;
 	}
 	
 	public void scan(){
